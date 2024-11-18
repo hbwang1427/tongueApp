@@ -1,0 +1,23 @@
+{
+    "datasets" : {
+        "faceRef" : {
+            "folderName" : "gallery_faces/InvDay2016Reference",
+            "placeholderImgPath" : "/home/philips_cpm/xchallenge_data/faces/gallery/**/",
+            "imgExtensions":[".jpg", ".png"],
+            "placeholderFeaturePath" : "/home/philips_cpm/xchallenge_data/features/gallery/**/**/",
+            "featureExtensions":[".npy"],
+            "id":{ "level":-2,"index" : 0, "regex": null , "mask": null}
+        },
+        "faceProbe" : {
+            "folderName" : "probe_faces",
+            "placeholderImgPath" : "/home/philips_cpm/xchallenge_data/faces/probe/**/",
+            "imgExtensions":[".jpg"],
+	    
+            "placeholderFeaturePath" : "/home/philips_cpm/xchallenge_data/features/probe/**/**/",
+            "featureExtensions":[".npy"],
+            "id":{ "level":-2, "index" : 0, "regex":null, "mask": null}
+        }
+    },
+    "exclude":{"Images": [], "Features":[], "miscellaneous":[]},
+    "models":"../models"
+}

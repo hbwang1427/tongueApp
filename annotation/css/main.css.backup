@@ -1,0 +1,160 @@
+@font-face {
+  font-family: centrale_sans_book;
+  src: url(http://www.crsc.philips.com/crsc/images/9bfa0cc062e15012e1add0595df88302.eot);
+  src: url(http://www.crsc.philips.com/crsc/images/9bfa0cc062e15012e1add0595df88302.eot?#iefix) format('embedded-opentype'), url(http://www.crsc.philips.com/crsc/images/3592b554253cbb1150975c676b1c1354.woff) format('woff'), url(http://www.crsc.philips.com/crsc/images/148654bbdc87b093df67db9e90f3aded.ttf) format('truetype'), url(http://www.crsc.philips.com/crsc/images/97aaf269f1cbf293cdcc75e38832d1dd.svg#97aaf269f1cbf293cdcc75e38832d1dd) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_xbold;
+  src: url(http://www.crsc.philips.com/crsc/images/c0c6171a7cd00efeb1747c1b99c1d2d8.eot);
+  src: url(http://www.crsc.philips.com/crsc/images/c0c6171a7cd00efeb1747c1b99c1d2d8.eot?#iefix) format('embedded-opentype'), url(http://www.crsc.philips.com/crsc/images/90936aab1b6de78019e705f599c3515c.woff) format('woff'), url(http://www.crsc.philips.com/crsc/images/7ab62aacbb6b582020a44565bccc997f.ttf) format('truetype'), url(http://www.crsc.philips.com/crsc/images/77cea70dac979556385daa12daa80e86.svg#77cea70dac979556385daa12daa80e86) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_bold;
+  src: url(http://www.crsc.philips.com/crsc/images/3c4ca77fe29b108ea5d5053095517a40.eot);
+  src: url(http://www.crsc.philips.com/crsc/images/3c4ca77fe29b108ea5d5053095517a40.eot?#iefix) format('embedded-opentype'), url(http://www.crsc.philips.com/crsc/images/81f9c47b5c5e75387fe1b387f8e0aa9a.woff) format('woff'), url(http://www.crsc.philips.com/crsc/images/d955d05fcba32624bba92896b0a14cd6.ttf) format('truetype'), url(http://www.crsc.philips.com/crsc/images/31a6f59d4689fe9fc29dd0ba5c731cef.svg#31a6f59d4689fe9fc29dd0ba5c731cef) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_light;
+  src: url(http://www.crsc.philips.com/crsc/images/1b088974f7f74feae55ca5f0be88aa70.eot);
+  src: url(http://www.crsc.philips.com/crsc/images/1b088974f7f74feae55ca5f0be88aa70.eot?#iefix) format('embedded-opentype'), url(http://www.crsc.philips.com/crsc/images/806cd79a05e0fa5d9952f0b57979d87d.woff) format('woff'), url(http://www.crsc.philips.com/crsc/images/c9a8c16311b12147a5e210077c7aae25.ttf) format('truetype'), url(http://www.crsc.philips.com/crsc/images/e59a63ad74e8efda1ecee685725b3c26.svg#e59a63ad74e8efda1ecee685725b3c26) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_medium;
+  src: url(http://www.crsc.philips.com/crsc/images/f73683b1b80f678d0eca87c15c18d250.eot);
+  src: url(http://www.crsc.philips.com/crsc/images/f73683b1b80f678d0eca87c15c18d250.eot?#iefix) format('embedded-opentype'), url(http://www.crsc.philips.com/crsc/images/0a4756e1297cf9bf227de2c6de58bfd5.woff) format('woff'), url(http://www.crsc.philips.com/crsc/images/1dc8ef1988fe2dad9477aeec0679eac2.ttf) format('truetype'), url(http://www.crsc.philips.com/crsc/images/008c5d6850e6da67ce0152a66c07187e.svg#008c5d6850e6da67ce0152a66c07187e) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_thin;
+  src: url(http://www.crsc.philips.com/crsc/images/605d7d18f404a43db5e70547fb00d799.eot);
+  src: url(http://www.crsc.philips.com/crsc/images/605d7d18f404a43db5e70547fb00d799.eot?#iefix) format('embedded-opentype'), url(http://www.crsc.philips.com/crsc/images/659fca5938465b957daeeca2c82ccd58.woff) format('woff'), url(http://www.crsc.philips.com/crsc/images/7529d43b260320f220fd9b1da7841900.ttf) format('truetype'), url(http://www.crsc.philips.com/crsc/images/b3a14d1ce202cd82b2aa4092527f3122.svg#b3a14d1ce202cd82b2aa4092527f3122) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#holder {
+    background-image: url('../img/back-hand-phone-left.png');
+    width: 740px;
+    height: 586px;
+}
+
+#twits {
+  position: absolute;
+  margin-left: 211px;
+  margin-top: 71px;
+  width: 208px;
+  height: 363px;
+  word-break: break-word;
+}
+
+#profile {
+    height: 363px;
+}
+
+#logo {
+    height: 100px;
+}
+
+#footer {
+  font-family: centrale_sans_book, tahoma, arial, helvetica, sans-serif;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  color: white;
+  background-image: linear-gradient(145deg, rgb(11, 34, 101), rgb(0, 57, 166));
+  padding-bottom: 30px;
+}
+
+.p-footer {
+    padding-top: 36px;
+    padding-bottom: 43px;
+}
+
+.p-logo {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    display: block;
+    position: absolute;
+    background: url('../img/logo-tiler-m.png') 0 0 repeat-y;
+    z-index: 20;
+    width: 140px;
+    height: 140px;
+    padding-top: 87px;
+    margin-top: 20px;
+    margin-left: 300px;
+    -moz-box-shadow: 0 3px 8px 3px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0 3px 8px 3px rgba(0,0,0,0.4);
+    box-shadow: 0 3px 8px 3px rgba(0,0,0,0.4);
+}
+
+.p-logo:before {
+    content: '';
+    background: url('../img/sprite-header-rebrand.png') 0 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 140px;
+}
+
+.p-logo-row  {
+    height: 195px;
+    background: url('../img/MH_PE2.jpg') 0 0;
+    margin-bottom: 30px;
+}
+
+.p-logo .p-refresh {
+  position: absolute;
+  width: 100%;
+  height: 87px;
+  top: 0;
+}
+.p-logo span {
+  position: relative;
+  z-index: 1;
+  display: table-cell;
+  color: #fff;
+  vertical-align: middle;
+  word-break: break-word;
+  font-size: 17px;
+  height: 41px;
+  padding: 6px 13px 6px 13px;
+}
+text.highcharts-title {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.title {
+  font-family: centrale_sans_xbold, tahoma, arial, helvetica, sans-serif;
+  font-size: 60px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  color:#FFF;
+  margin-left:550px;
+  padding-top:50px;
+}
+
+pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}

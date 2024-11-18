@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  background-color: white;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container1 {
+  position: relative;
+  float: left;
+  width: 40%;
+}
+
+.container2 {
+  position: relative;
+  float: left;
+  width: 60%; 
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0%;
+  border-radius: 3px 0 0 3px;
+}
+.prev {
+  left: 0%;
+  border-radius: 3px 00 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.btn {
+    background-color: white;
+    border: 3px solid #0099ff;
+    color: #0099ff;
+    cursor: pointer;
+    float: left;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.active,
+.btn:hover {
+    background-color: #0099ff;
+    color: white;
+    border: 3px solid #0099ff;
+    cursor: pointer;
+}
+
+.btn2 {
+    background-color: white;
+    border: 3px solid #745f03;
+    color: #745f03;
+    cursor: pointer;
+    float: left;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.active2,
+.btn2:hover {
+    background-color: #745f03;
+    color: white;
+    border: 3px solid #745f03;
+    cursor: pointer;
+}
+
+.btn3 {
+    background-color: white;
+    border: 3px solid #c198e7;
+    color: #c198e7;
+    cursor: pointer;
+    float: left;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.active3,
+.btn3:hover {
+    background-color: #c198e7;
+    color: white;
+    border: 3px solid #c198e7;
+    cursor: pointer;
+}
+
+.labeled {
+    border: 3px solid #66ff00;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+  width: 100%;
+}
+
+/* Container for image text */
+.head {
+  text-align: center;
+  background-color: #222;
+  padding: 20px 26px;
+  color: white;
+  font-size: 36px;
+  width: 100%;
+  top: 0px;
+  position: relative;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  height: 100px;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+
+<body>
+<h1 class="head">舌苔图像标注系统</h1>
+<button id="download_image">下载图像</button>
+<button id="download_labels">下载标签</button> 
+<button id="upload_image">上传图像</button>
+<button id="upload_labels">上传标签</button>
+
+<div class="container1" align="center">
+  <img src="img/tongue/1.jpeg" style="height:50vh" id="image_selected">
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <h3 style="text-align:center" id="label">请各选择一个舌质（蓝色）、舌苔（黄色）、舌形（紫色）标签</h3>
+  <h4 style="text-align:center" id="label">(若存疑，请选择“不确定”)</h4>
+  <div class="btn-group" id="material_labels">
+      <button class="btn" id="dan">舌淡</button>  
+      <button class="btn" id="hong">舌红</button>  
+      <button class="btn" id="danhong">舌淡红</button>  
+      <button class="btn" id="hongjiang">舌红降</button>  
+      <button class="btn" id="zi">舌紫</button>  
+      <button class="btn" id="ziqi">舌紫气</button>
+      <button class="btn" id="an">舌暗</button>
+      <button class="btn" id="andan">舌暗淡</button>
+      <button class="btn" id="yuban">舌淤斑</button>
+      <button class="btn" id="unsure">不确定</button>
+  </div> 
+
+  <div class="btn-group" id="tai_labels">
+      <button class="btn2" id="dan">苔薄</button>  
+      <button class="btn2" id="hong">苔白</button>  
+      <button class="btn2" id="danhong">苔黄</button>  
+      <button class="btn2" id="hongjiang">苔少</button>  
+      <button class="btn2" id="zi">苔厚</button>  
+      <button class="btn2" id="ziqi">苔腻</button>
+      <button class="btn2" id="an">苔润</button>
+      <button class="btn2" id="andan">苔燥（干）</button>
+      <button class="btn2" id="yuban">苔少津</button>
+      <button class="btn2" id="unsure">不确定</button>
+  </div> 
+
+  <div class="btn-group" id="shape_labels">
+      <button class="btn3" id="dan">舌胖</button>  
+      <button class="btn3" id="hong">舌有齿痕</button>  
+      <button class="btn3" id="danhong">舌瘦</button>  
+      <button class="btn3" id="hongjiang">舌老</button>  
+      <button class="btn3" id="zi">舌嫩</button>  
+      <button class="btn3" id="ziqi">舌起刺</button>
+      <button class="btn3" id="an">舌裂纹</button>
+      <button class="btn3" id="unsure">不确定</button>
+  </div> 
+</div>
+
+<div class="container2" style="float: right" id='database'>
+  <h2 style="text-align:center" id="database_txt">舌苔数据库列表</h2>
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row" id="database" stype="float:right">
+    </div>
+</div>
+</div>
+
+<script>
+/*scripts to process label buttons*/
+var material_label = "";
+var tai_label = "";
+var shape_label = "";
+
+function updateLabel(){
+  Labels[AllImages[slideIndex-1]]["舌质"]=material_label;
+  Labels[AllImages[slideIndex-1]]["舌苔"]=tai_label;
+  Labels[AllImages[slideIndex-1]]["舌形"]=shape_label;
+  c = document.getElementById("caption");
+  c.innerHTML = AllImages[slideIndex-1]+":{";
+  dic = Labels[AllImages[slideIndex-1]];
+  for (var k in dic) {
+    // check if the property/key is defined in the object itself, not in parent
+    if (dic.hasOwnProperty(k)) {           
+      c.innerHTML += "  "+k+": "+dic[k]+"  ";
+    }
+  }
+  c.innerHTML += "}";
+  
+  if(material_label&&tai_label&&shape_label){
+    document.getElementById(AllImages[slideIndex-1]).classList.add("labeled");
+  }
+}
+
+function codeAddress() {
+    const btnClick = function () {
+        var actelem = this.parentNode.getElementsByClassName("active");
+        if (actelem.length>0){
+          actelem[0].classList.remove("active")
+        }
+        this.classList.add("active");
+        material_label = this.innerHTML;
+        updateLabel();
+    };
+    document.querySelectorAll(".btn-group .btn").forEach(btn => btn.addEventListener('click', btnClick));
+
+    const btnClick2 = function () {
+        var actelem = this.parentNode.getElementsByClassName("active2");
+        if (actelem.length>0){
+          actelem[0].classList.remove("active2");
+        }
+        this.classList.add("active2");
+        tai_label = this.innerHTML;
+        updateLabel();
+    };
+    document.querySelectorAll(".btn-group .btn2").forEach(btn2 => btn2.addEventListener('click', btnClick2));
+
+    const btnClick3 = function () {
+        var actelem = this.parentNode.getElementsByClassName("active3");
+        if (actelem.length>0){
+          actelem[0].classList.remove("active3");
+        }
+        this.classList.add("active3");
+        shape_label = this.innerHTML;
+        updateLabel();
+    };
+    document.querySelectorAll(".btn-group .btn3").forEach(btn3 => btn3.addEventListener('click', btnClick3));
+}
+window.onload = codeAddress;
+</script>
+
+<script>
+/*script to process slide selection*/
+var TotalImages = 20;
+var slideIndex = 1;
+var AllImages = [];
+var Labels = {};
+
+loadDatabase(TotalImages);
+showSlides(slideIndex);
+
+function loadDatabase(img_num)
+{
+  for(var i=1; i<=img_num; i++)
+  { 
+    //need to change to jquery for loading from webserver
+    imname = "img/tongue/"+i.toString()+".jpeg";
+    AllImages.push(imname);
+    Labels[imname] = {
+       "舌质": "",
+       "舌苔": "",
+       "舌形": ""
+      };
+
+    var div = document.createElement('div');
+    div.setAttribute('class','column');
+    var im = document.createElement('img');
+    im.setAttribute('class','demo cursor');
+    im.width = "100";
+    im.height = "100";
+    im.setAttribute('onclick','currentSlide('+i.toString()+')');	
+    im.setAttribute('id',imname);
+    im.src = imname
+    div.appendChild(im)
+    document.getElementById('database').appendChild(div)
+  }
+}
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+
+  slideIndex = n;
+  if (n > AllImages.length) {slideIndex = 1};
+  if (n < 1) {slideIndex = AllImages.length};
+
+  //reset selected slide
+  for (var i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  dots[slideIndex-1].className += " active";
+  document.getElementById("image_selected").src = AllImages[slideIndex-1];
+
+  material_label = Labels[AllImages[slideIndex-1]]["舌质"];
+  tai_label = Labels[AllImages[slideIndex-1]]["舌苔"];
+  shape_label = Labels[AllImages[slideIndex-1]]["舌形"];
+  updateLabel();
+
+  var btns = document.querySelectorAll(".btn-group .btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].className = btns[i].className.replace(" active", "")
+  }
+  for (var i=0; i<btns.length; i++){
+    if (btns[i].innerHTML===material_label)
+      btns[i].classList.add("active")
+  }
+  var btns = document.querySelectorAll(".btn-group .btn2");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].className = btns[i].className.replace(" active2", "")
+  }
+  for (var i=0; i<btns.length; i++){
+    if (btns[i].innerHTML===tai_label)
+      btns[i].classList.add("active2")
+  }
+  var btns = document.querySelectorAll(".btn-group .btn3");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].className = btns[i].className.replace(" active3", "")
+  }
+  for (var i=0; i<btns.length; i++){
+    if (btns[i].innerHTML===shape_label)
+      btns[i].classList.add("active3")
+  }
+}
+</script>
+    
+</body>
+</html>
+

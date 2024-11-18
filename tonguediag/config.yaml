@@ -1,0 +1,15 @@
+isDevelop: true
+http: 
+  addr: :8080
+
+autocert:
+  domains: []
+  cacheDir: 
+
+uploadDir: ./upload/
+sqliteDB: data.db
+
+logger:
+  file: logs/myapp.log
+  maxage: 240h
+  level: debug

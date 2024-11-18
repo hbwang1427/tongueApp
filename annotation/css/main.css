@@ -1,0 +1,99 @@
+@font-face {
+  font-family: centrale_sans_book;
+  src: url(sansation_bold.woff);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_xbold;
+  src: url(sansation_bold.woff);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_bold;
+  src: url(sansation_bold.woff);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_light;
+  src: url(sansation_bold.woff);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_medium;
+  src: url(sansation_bold.woff);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: centrale_sans_thin;
+  src: url(sansation_bold.woff);
+  font-weight: normal;
+  font-style: normal;
+}
+
+#holder {
+    background-image: url('../img/back-hand-phone-left.png');
+    width: 740px;
+    height: 586px;
+}
+
+#twits {
+  position: absolute;
+  margin-left: 211px;
+  margin-top: 71px;
+  width: 208px;
+  height: 363px;
+  word-break: break-word;
+}
+
+#profile {
+    height: 363px;
+}
+
+#logo {
+    height: 100px;
+}
+
+#footer {
+  font-family: centrale_sans_book, tahoma, arial, helvetica, sans-serif;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  color: white;
+  background-image: linear-gradient(145deg, rgb(11, 34, 101), rgb(0, 57, 166));
+  padding-bottom: 30px;
+}
+text.highcharts-title {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.title {
+  font-family: centrale_sans_xbold, tahoma, arial, helvetica, sans-serif;
+  font-size: 60px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  color:#FFF;
+  margin-left:550px;
+  padding-top:50px;
+}
+
+pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  background-color: white;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container1 {
+  position: relative;
+  float: left;
+  width: 40%;
+}
+
+.container2 {
+  position: relative;
+  float: left;
+  width: 60%; 
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0%;
+  border-radius: 3px 0 0 3px;
+}
+.prev {
+  left: 0%;
+  border-radius: 3px 00 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.btn {
+    background-color: white;
+    border: 3px solid #0099ff;
+    color: #0099ff;
+    cursor: pointer;
+    float: left;
+    padding: 10px 16px;
+    font-size: 18px;
+}
+
+.active,
+.btn:hover {
+    background-color: #0099ff;
+    color: white;
+    border: 3px solid #0099ff;
+    cursor: pointer;
+}
+
+.labeled {
+    border: 3px solid #66ff00;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+  width: 100%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  height: 100px;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+
+<body>
+<h1 style="text-align:center">舌苔图像标注系统</h1>
+
+<div class="container1" align="center">
+  <img src="/assets/demo/tongue/1.jpeg" style="width:96%" id="image_selected">
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+
+<div class="container2" stype="float: right">
+  <h2 style="text-align:center" id="label">请选择一个标签</h2>
+  <div class="btn-group" id="labels">
+    <button class="btn" id="normal">正常舌苔</button>  
+    <button class="btn" id="strawberry">草莓舌苔</button>  
+    <button class="btn" id="white">白舌苔</button>  
+    <button class="btn" id="boluo">剥落苔</button>  
+    <button class="btn" id="yellow">黄苔</button>  
+    <button class="btn" id="zaotai">燥苔</button>
+    <button class="btn" id="unknown">不确定</button>
+    <button class="btn active" id="unlabeled">未标定</button>
+  </div> 
+</div>
+
+<div class="container2" style="float: right">
+  <h2 style="text-align:center" id="database_txt">舌苔数据库列表</h2>
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row" id="database" stype="float:right">
+    </div>
+</div>
+</div>
+
+<script>
+function codeAddress() {
+    const btnClick = function () {
+        this.parentNode.getElementsByClassName("active")[0].classList.remove("active");
+        this.classList.add("active");
+        Labels[AllImages[slideIndex-1]]=this.innerHTML;
+        document.getElementById("caption").innerHTML = AllImages[slideIndex-1]+": "+this.innerHTML;
+        if(!(this.innerHTML==="未标定"))
+          document.getElementById(AllImages[slideIndex-1]).classList.add("labeled");
+    };
+    document.querySelectorAll(".btn-group .btn").forEach(btn => btn.addEventListener('click', btnClick));
+}
+window.onload = codeAddress;
+</script>
+
+<script>
+/*script to process slide selection*/
+var TotalImages = 20;
+var slideIndex = 1;
+var AllImages = [];
+var Labels = {};
+
+loadDatabase(TotalImages);
+showSlides(slideIndex);
+
+function loadDatabase(img_num)
+{
+  for(var i=1; i<=img_num; i++)
+  { 
+    //need to change to jquery for loading from webserver
+    imname = "/assets/demo/tongue/"+i.toString()+".jpeg";
+    AllImages.push(imname);
+    Labels[imname]="未标定";
+
+    var div = document.createElement('div');
+    div.setAttribute('class','column');
+    var im = document.createElement('img');
+    im.setAttribute('class','demo cursor');
+    im.setAttribute('style','height:100%');
+    im.setAttribute('onclick','currentSlide('+i.toString()+')');	
+    im.setAttribute('id',imname);
+    im.src = imname
+    div.appendChild(im)
+    document.getElementById('database').appendChild(div)
+  }
+}
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+
+  slideIndex = n;
+  if (n > AllImages.length) {slideIndex = 1};
+  if (n < 1) {slideIndex = AllImages.length};
+
+  //reset selected slide
+  for (var i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = AllImages[slideIndex-1]+": "+Labels[AllImages[slideIndex-1]];
+  document.getElementById("image_selected").src = AllImages[slideIndex-1];
+
+  var btns = document.querySelectorAll(".btn-group .btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].className = btns[i].className.replace(" active", "")
+  }
+  for (var i=0; i<btns.length; i++){
+    if (btns[i].innerHTML==Labels[AllImages[slideIndex-1]])
+      btns[i].classList.add("active")
+  }
+}
+</script>
+    
+</body>
+</html>
+
